@@ -54,8 +54,8 @@ public class HitratunnelNy{
 				Thread.sleep(500);
 
 
-				Motor.A.rotate(255);
-				Motor.C.rotate(-255);
+				Motor.A.rotate(256);
+				Motor.C.rotate(-256);
 				while(Motor.A.isMoving())Thread.yield();
 			}
 			trykksensor.fetchSample(trykkSample, 0);
