@@ -10,8 +10,7 @@ import lejos.hardware.port.SensorPort;
 import lejos.hardware.sensor.EV3ColorSensor;
 import lejos.hardware.sensor.SensorMode;
 import lejos.robotics.RegulatedMotor;
-import lejos.hardware.sensor.NXTSoundSensor;
-import java.util.concurrent.TimeUnit;
+import lejos.hardware.sensor.NXTSoundSensor;k
 import lejos.robotics.SampleProvider;
 
 public class Follow {
