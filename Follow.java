@@ -24,7 +24,7 @@ public class Follow {
 		SampleProvider lyd = new NXTSoundSensor(SensorPort.S3);
 		//henter lydsensor som en sampleprovider
 
-
+//hei birk
 
 		while(Button.ESCAPE.isUp()) { 
 			//while til escape blir trykket
