@@ -14,13 +14,6 @@ import lejos.hardware.sensor.NXTSoundSensor;
 import java.util.concurrent.TimeUnit;
 import lejos.robotics.SampleProvider;
 
-/**
- * Requires a wheeled vehicle with two independently controlled
- * motors connected to motor ports B and C, and
- * an EV3 IR sensor connected to port 4.
- *
- * @author Glukland
- */
 public class Follow {
 
 
