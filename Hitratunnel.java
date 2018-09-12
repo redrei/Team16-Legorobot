@@ -47,17 +47,17 @@ public class Hitratunnel{
 		svart = svart / 100 + 5;
 		
 		//sammenligner farger, sjekker etter svart
->>>>>>> 7f365519e1de931c97ec90b5a2947540ea9f1f77
+
 
 
 		while(Button.ESCAPE.isUp()) {
 
 	   		fargeLeser.fetchSample(fargeSample, 0);
-<<<<<<< HEAD
+
 	   		System.out.println("farge: " + fargesensor.getColorID());
-=======
+
 			System.out.println("Farge: " + svart);
->>>>>>> 7f365519e1de931c97ec90b5a2947540ea9f1f77
+
 
        		if (fargesensor.getColorID()==7){
 		 		LCD.clear();
@@ -105,11 +105,11 @@ public class Hitratunnel{
 			lydsensor.fetchSample(lydSample, 0);
 			if (lydSample[0] > 0.4){
 				System.out.println("Hørte en lyd og stopper.");
-<<<<<<< HEAD
+
 					Motor.A.stop();
-=======
-				Motor.A.stop();
->>>>>>> 7f365519e1de931c97ec90b5a2947540ea9f1f77
+
+				Motor.B.stop();
+
     	 			Motor.C.stop();
 				Thread.sleep(2000);
 			}
