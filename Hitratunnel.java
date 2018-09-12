@@ -37,15 +37,14 @@ public class Hitratunnel{
 		float[] lydSample = new float[lydsensor.sampleSize()];
 		//lydsensor med array og sampleprovider
 
-<<<<<<< HEAD
-=======
+
 		int svart = 0;
 		for (int i = 0; i<100; i++){
 			fargeLeser.fetchSample(fargeSample, 0);
 			svart += fargeSample[0]* 100;
 		}
 		svart = svart / 100 + 5;
-		
+
 		//sammenligner farger, sjekker etter svart
 
 
