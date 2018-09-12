@@ -8,10 +8,12 @@ import lejos.hardware.Brick;
 import lejos.hardware.BrickFinder;
 import lejos.robotics.SampleProvider;
 import lejos.hardware.sensor.NXTSoundSensor;
+import lejos.hardware.Button;
 
 public class Hitratunnel{
 	public static void main (String[] args)  throws Exception{
 		Motor.A.setSpeed(450);
+		Motor.B.setSpeed(900);
 	 	Motor.C.setSpeed(450);
 		//setter motorfart til 450
 
@@ -35,26 +37,19 @@ public class Hitratunnel{
 		float[] lydSample = new float[lydsensor.sampleSize()];
 		//lydsensor med array og sampleprovider
 
-		int svart = 0;
-		for (int i = 0; i<100; i++){
-			fargeLeser.fetchSample(fargeSample, 0);
-			svart += fargeSample[0]* 100;
-		}
-		svart = svart / 100 + 5;
-		System.out.println("Svart: " + svart);
-		//sammenligner farger, sjekker etter svart
 
-	 	boolean fortsett = true;
 
-		while(fortsett) {
+		while(Button.ESCAPE.isUp()) {
 
 	   		fargeLeser.fetchSample(fargeSample, 0);
+	   		System.out.println("farge: " + fargesensor.getColorID());
 
-       		if (fargeSample[0]*100 == svart){
+       		if (fargesensor.getColorID()==7){
 		 		LCD.clear();
 				Motor.A.stop();
 				Motor.C.stop();
 				Thread.sleep(500);
+				System.out.println("svart");
 
 				Motor.A.backward();
 				Motor.C.backward();
@@ -95,6 +90,8 @@ public class Hitratunnel{
 			lydsensor.fetchSample(lydSample, 0);
 			if (lydSample[0] > 0.4){
 				System.out.println("Hørte en lyd og stopper.");
+					Motor.A.stop();
+    	 			Motor.C.stop();
 				Thread.sleep(2000);
 			}
 			else{
