@@ -51,7 +51,7 @@ public class HitratunnelNy{
 				Motor.C.backward();
 				Thread.sleep(500);
 
-				Motor.A.rotate(180);
+				Motor.A.rotate(390);
 				Motor.C.stop();
 
 				while (Motor.A.isMoving()) Thread.yield();
@@ -84,11 +84,11 @@ public class HitratunnelNy{
     	 			Motor.C.stop();
 			}
 			lydsensor.fetchSample(lydSample, 0);
-			if (lydSample[0] > 0.4){
-				System.out.println("Hørte en lyd og stopper.");
+			if (lydSample[0] > 0.55){
+				System.out.println("HÃ¸rte en lyd og stopper.");
 				Motor.A.stop();
 				Motor.C.stop();
-				Thread.sleep(2000);
+				Thread.sleep(5000);
 			}
 			else{
 				Motor.A.forward();
