@@ -10,8 +10,8 @@ import lejos.hardware.sensor.NXTSoundSensor;
 
 public class HitratunnelNy{
 	public static void main (String[] args)  throws Exception{
-		Motor.A.setSpeed(450);
-	 	Motor.C.setSpeed(450);
+		Motor.A.setSpeed(900);
+	 	Motor.C.setSpeed(900);
 
 	 	Brick brick = BrickFinder.getDefault();
 	 	Port s1 = brick.getPort("S1");
