@@ -7,6 +7,7 @@ import lejos.hardware.Brick;
 import lejos.hardware.BrickFinder;
 import lejos.robotics.SampleProvider;
 import lejos.hardware.sensor.NXTSoundSensor;
+import lejos.hardware.Button;
 
 public class HitratunnelNy{
 	public static void main (String[] args)  throws Exception{
@@ -37,7 +38,7 @@ public class HitratunnelNy{
 
 	 	boolean fortsett = true;
 
-		while(fortsett) {
+		while(Button.ESCAPE.isUp()) {
 		float[] fargeSample = new float[fargeLeser.sampleSize()];
 	   		fargeLeser.fetchSample(fargeSample, 0);
 			Motor.B.forward();
@@ -53,8 +54,8 @@ public class HitratunnelNy{
 				Thread.sleep(500);
 
 
-				Motor.A.rotate(260);
-				Motor.C.rotate(-260);
+				Motor.A.rotate(250);
+				Motor.C.rotate(-250);
 				while(Motor.A.isMoving())Thread.yield();
 			}
 			trykksensor.fetchSample(trykkSample, 0);
