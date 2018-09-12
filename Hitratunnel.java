@@ -95,6 +95,8 @@ public class Hitratunnel{
 			lydsensor.fetchSample(lydSample, 0);
 			if (lydSample[0] > 0.4){
 				System.out.println("Hørte en lyd og stopper.");
+				Motor.A.stop();
+    	 			Motor.C.stop();
 				Thread.sleep(2000);
 			}
 			else{
