@@ -41,7 +41,7 @@ public class Follow {
 				{
 				    Thread.currentThread().interrupt();
 }
-				System.out.println(ir.getColorID() + " lyd: " + sample[0]); 
+				System.out.println("Farge: " + ir.getColorID() + " lyd: " + sample[0]); 
 			//henter farge id-en som er en int, og det første elementet i arrayen "sample"
 		}
 		ir.close();
