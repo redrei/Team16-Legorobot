@@ -13,7 +13,7 @@ import lejos.robotics.RegulatedMotor;
 import lejos.hardware.sensor.NXTSoundSensor;
 import java.util.concurrent.TimeUnit;
 import lejos.robotics.SampleProvider;
-//hehehehehehehehe
+
 public class Follow {
 
 
