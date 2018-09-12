@@ -8,7 +8,7 @@ import lejos.hardware.Brick;
 import lejos.hardware.BrickFinder;
 import lejos.robotics.SampleProvider;
 
-//jhl
+//jhlyuhoiuoiuyoiyiouyoiuyoiuyioyuioyuiuoy
 public class Firkant{
 	public static void main (String[] args)  throws Exception{
 		Motor.A.setSpeed(450);
