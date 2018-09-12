@@ -19,31 +19,31 @@ import lejos.robotics.SampleProvider;
  * motors connected to motor ports B and C, and
  * an EV3 IR sensor connected to port 4.
  *
- * @author Lawrie Griffiths
+ * @author Glukland
  */
 public class Follow {
 
 
 	public static void main(String[] args) {
 
-		EV3ColorSensor ir = new EV3ColorSensor(SensorPort.S4);
-		SampleProvider lyd = new NXTSoundSensor(SensorPort.S3);
+		EV3ColorSensor ir = new EV3ColorSensor(SensorPort.S4);//henter fargesensor
+		SampleProvider lyd = new NXTSoundSensor(SensorPort.S3);//henter lydsensor som en sampleprovider
 
 
 
-		while(Button.ESCAPE.isUp()) {
-			 float[] sample = new float[lyd.sampleSize()];
-			 lyd.fetchSample(sample, 0);
+		while(Button.ESCAPE.isUp()) { //while til escape blir trykket
+			 float[] sample = new float[lyd.sampleSize()];//lager en float-array med med lengden antall sampler som blir målt av lydsensor 
+			 lyd.fetchSample(sample, 0);//henter sampler til samplearrayen fra lydsensor
 				try
 				{
 				    Thread.sleep(100);
 				}
-				catch(InterruptedException ex)
+				catch(InterruptedException ex)//sleep krevde dette
 				{
 				    Thread.currentThread().interrupt();
 }
-				System.out.println(ir.getColorID() + " lyd: " + sample[0]);
+				System.out.println(ir.getColorID() + " lyd: " + sample[0]); //henter farge id-en som er en int, og det første elementet i arrayen "sample"
 		}
-		ir.close();
+		ir.close();//slår av fargesensor
 	}
 }
