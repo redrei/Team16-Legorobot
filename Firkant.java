@@ -9,7 +9,7 @@ import lejos.hardware.BrickFinder;
 import lejos.robotics.SampleProvider;
 
 
-public class test{
+public class Firkant{
 	public static void main (String[] args)  throws Exception{
 		Motor.A.setSpeed(450);
 	 	Motor.C.setSpeed(450);
