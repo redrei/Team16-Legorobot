@@ -46,26 +46,17 @@ public class HitratunnelNy{
 		 		System.out.println("Svart: ");
 				Motor.A.stop();
 				Motor.C.stop();
-				Thread.sleep(1000);
+				Thread.sleep(200);
 
 				Motor.A.backward();
 				Motor.C.backward();
-				Thread.sleep(1000);
+				Thread.sleep(500);
 
-				Motor.A.stop();
-				Motor.C.stop();
-				Thread.sleep(1000);
 
-				Motor.A.rotate(180);
-				Motor.C.stop();
-
-				while (Motor.A.isMoving()) Thread.yield();
-
-					Thread.sleep(1000);
-					Motor.A.stop();
-    	 			Motor.C.stop();
+				Motor.A.rotate(280);
+				Motor.C.rotate(-280);
+				while(Motor.A.isMoving())Thread.yield();
 			}
-
 			trykksensor.fetchSample(trykkSample, 0);
 
     	 	if (trykkSample[0] > 0){
@@ -84,9 +75,6 @@ public class HitratunnelNy{
 
 				while (Motor.A.isMoving()) Thread.yield();
 
-					Thread.sleep(1000);
-					Motor.A.stop();
-    	 			Motor.C.stop();
 			}
 			lydsensor.fetchSample(lydSample, 0);
 			if (lydSample[0] > 0.75){
