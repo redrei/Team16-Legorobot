@@ -42,7 +42,7 @@ public class Hitratunnel{
 			svart += fargeSample[0]* 100;
 		}
 		svart = svart / 100 + 5;
-		
+
 		//sammenligner farger, sjekker etter svart
 
 	 	boolean fortsett = true;
@@ -50,6 +50,9 @@ public class Hitratunnel{
 		while(fortsett) {
 
 	   		fargeLeser.fetchSample(fargeSample, 0);
+
+			System.out.println("Svart: " + svart);
+
 			System.out.println("Farge: " + svart);
 
        		if (fargeSample[0]*100 == svart){
