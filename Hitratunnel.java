@@ -12,6 +12,7 @@ import lejos.hardware.sensor.NXTSoundSensor;
 public class Hitratunnel{
 	public static void main (String[] args)  throws Exception{
 		Motor.A.setSpeed(450);
+		Motor.B.setSpeed(900);
 	 	Motor.C.setSpeed(450);
 		//setter motorfart til 450
 
