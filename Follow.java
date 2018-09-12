@@ -28,11 +28,11 @@ public class Follow {
 
 		EV3ColorSensor ir = new EV3ColorSensor(SensorPort.S4);
 		SampleProvider lyd = new NXTSoundSensor(SensorPort.S3);
-		float[] sample = new float[lyd.sampleSize()];
 
 
 
 		while(Button.ESCAPE.isUp()) {
+			 float[] sample = new float[lyd.sampleSize()];
 			 lyd.fetchSample(sample, 0);
 				try
 				{
@@ -42,7 +42,7 @@ public class Follow {
 				{
 				    Thread.currentThread().interrupt();
 }
-				System.out.println(ir.getColorID() + " lyd: " + sample);
+				System.out.println(ir.getColorID() + " lyd: " + sample[0]);
 		}
 		ir.close();
 	}
