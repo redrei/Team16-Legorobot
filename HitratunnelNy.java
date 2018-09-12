@@ -10,8 +10,8 @@ import lejos.hardware.sensor.NXTSoundSensor;
 
 public class HitratunnelNy{
 	public static void main (String[] args)  throws Exception{
-		Motor.A.setSpeed(900);
-	 	Motor.C.setSpeed(900);
+		Motor.A.setSpeed(200);
+	 	Motor.C.setSpeed(200);
 	 	Motor.B.setSpeed(200);
 
 
@@ -40,7 +40,6 @@ public class HitratunnelNy{
 		while(fortsett) {
 		float[] fargeSample = new float[fargeLeser.sampleSize()];
 	   		fargeLeser.fetchSample(fargeSample, 0);
-	   		System.out.println(fargeSample[0]);
 			Motor.B.forward();
        		if (fargeSample[0] == 7){
 		 		LCD.clear();
@@ -87,7 +86,7 @@ public class HitratunnelNy{
 			}
 			lydsensor.fetchSample(lydSample, 0);
 			if (lydSample[0] > 0.75){
-				System.out.println("Hørte en lyd og stopper.");
+				System.out.println("Hoerte en lyd og stopper.");
 				Motor.A.stop();
 				Motor.C.stop();
 				Thread.sleep(5000);
