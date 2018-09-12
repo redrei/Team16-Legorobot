@@ -19,24 +19,32 @@ public class Follow {
 
 	public static void main(String[] args) {
 
-		EV3ColorSensor ir = new EV3ColorSensor(SensorPort.S4);//henter fargesensor
-		SampleProvider lyd = new NXTSoundSensor(SensorPort.S3);//henter lydsensor som en sampleprovider
+		EV3ColorSensor ir = new EV3ColorSensor(SensorPort.S4);
+		//henter fargesensor
+		SampleProvider lyd = new NXTSoundSensor(SensorPort.S3);
+		//henter lydsensor som en sampleprovider
 
 
 
-		while(Button.ESCAPE.isUp()) { //while til escape blir trykket
-			 float[] sample = new float[lyd.sampleSize()];//lager en float-array med med lengden antall sampler som blir målt av lydsensor 
-			 lyd.fetchSample(sample, 0);//henter sampler til samplearrayen fra lydsensor
+		while(Button.ESCAPE.isUp()) { 
+			//while til escape blir trykket
+			 float[] sample = new float[lyd.sampleSize()];
+			//lager en float-array med med lengden antall sampler som blir målt av lydsensor 
+			 lyd.fetchSample(sample, 0);
+			//henter sampler til samplearrayen fra lydsensor
 				try
 				{
 				    Thread.sleep(100);
 				}
-				catch(InterruptedException ex)//sleep krevde dette
+				catch(InterruptedException ex)
+					//sleep krevde e try catch
 				{
 				    Thread.currentThread().interrupt();
 }
-				System.out.println(ir.getColorID() + " lyd: " + sample[0]); //henter farge id-en som er en int, og det første elementet i arrayen "sample"
+				System.out.println(ir.getColorID() + " lyd: " + sample[0]); 
+			//henter farge id-en som er en int, og det første elementet i arrayen "sample"
 		}
-		ir.close();//slår av fargesensor
+		ir.close();
+		//slår av fargesensor
 	}
 }
