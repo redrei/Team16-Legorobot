@@ -12,6 +12,7 @@ import lejos.hardware.sensor.NXTSoundSensor;
 public class Hitratunnel{
 	public static void main (String[] args)  throws Exception{
 		Motor.A.setSpeed(450);
+		Motor.B.setSpeed(900);
 	 	Motor.C.setSpeed(450);
 		//setter motorfart til 450
 
@@ -49,7 +50,11 @@ public class Hitratunnel{
 		while(fortsett) {
 
 	   		fargeLeser.fetchSample(fargeSample, 0);
+
 			System.out.println("Svart: " + svart);
+
+			System.out.println("Farge: " + svart);
+
        		if (fargeSample[0]*100 == svart){
 		 		LCD.clear();
 				Motor.A.stop();
@@ -95,6 +100,8 @@ public class Hitratunnel{
 			lydsensor.fetchSample(lydSample, 0);
 			if (lydSample[0] > 0.4){
 				System.out.println("Hørte en lyd og stopper.");
+				Motor.A.stop();
+    	 			Motor.C.stop();
 				Thread.sleep(2000);
 			}
 			else{
