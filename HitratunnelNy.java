@@ -76,7 +76,7 @@ public class HitratunnelNy{
 				Motor.C.backward();
 				Thread.sleep(500);
 
-				Motor.A.rotate(180);
+				Motor.A.rotate(270);
 				Motor.C.stop();
 
 				while (Motor.A.isMoving()) Thread.yield();
