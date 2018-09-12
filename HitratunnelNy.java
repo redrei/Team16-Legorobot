@@ -12,6 +12,8 @@ public class HitratunnelNy{
 	public static void main (String[] args)  throws Exception{
 		Motor.A.setSpeed(900);
 	 	Motor.C.setSpeed(900);
+	 	Motor.B.setSpeed(200);
+
 
 	 	Brick brick = BrickFinder.getDefault();
 	 	Port s1 = brick.getPort("S1");
@@ -39,19 +41,19 @@ public class HitratunnelNy{
 		float[] fargeSample = new float[fargeLeser.sampleSize()];
 	   		fargeLeser.fetchSample(fargeSample, 0);
 	   		System.out.println(fargeSample[0]);
-
+			Motor.B.forward();
        		if (fargeSample[0] == 7){
 		 		LCD.clear();
 		 		System.out.println("Svart: ");
 				Motor.A.stop();
 				Motor.C.stop();
-				Thread.sleep(500);
+				Thread.sleep(1000);
 
 				Motor.A.backward();
 				Motor.C.backward();
-				Thread.sleep(500);
+				Thread.sleep(1000);
 
-				Motor.A.rotate(390);
+				Motor.A.rotate(270);
 				Motor.C.stop();
 
 				while (Motor.A.isMoving()) Thread.yield();
@@ -84,7 +86,7 @@ public class HitratunnelNy{
     	 			Motor.C.stop();
 			}
 			lydsensor.fetchSample(lydSample, 0);
-			if (lydSample[0] > 0.55){
+			if (lydSample[0] > 0.75){
 				System.out.println("Hørte en lyd og stopper.");
 				Motor.A.stop();
 				Motor.C.stop();

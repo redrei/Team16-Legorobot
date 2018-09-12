@@ -1,3 +1,3 @@
 Class-Path: /home/root/lejos/lib/ev3/ev3classes.jar /home/root/lejos/lib/ev3/dbusjava.jar
-Main-Class: Hitratunnel
+Main-Class: HitratunnelNy
 
