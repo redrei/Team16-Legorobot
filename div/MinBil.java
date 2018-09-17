@@ -1,10 +1,10 @@
 /*    MinBil.java G.S 2011 - 08 - 24
-* Program som styrer en bil med 2 motorer. Bilen oppfører seg slik:
-* 1. kjør framover
+* Program som styrer en bil med 2 motorer. Bilen oppfÃ¸rer seg slik:
+* 1. kjÃ¸r framover
 * 2. Rygg
-* 3. Sving høyre
-* 4. Endre hastighet på motorene
-* 5. Kjør framover igjen
+* 3. Sving hÃ¸yre
+* 4. Endre hastighet pÃ¥ motorene
+* 5. KjÃ¸r framover igjen
 */
 
 
@@ -36,11 +36,11 @@ public class MinBil
 	 boolean fortsett = true;
 		while(fortsett) {
 
-     // Kjør framover
+     // KjÃ¸r framover
      	System.out.println("Fram 2000 ms");
-    	 Motor.A.forward();  // Start motor A - kjør framover
-    	 Motor.C.forward();  // Start motor C - kjør framover
-    	 Thread.sleep(200); // Vent i 1000 ms før vi går videre i koden
+    	 Motor.A.forward();  // Start motor A - kjÃ¸r framover
+    	 Motor.C.forward();  // Start motor C - kjÃ¸r framover
+    	 Thread.sleep(200); // Vent i 1000 ms fÃ¸r vi gÃ¥r videre i koden
 
      // Sving
 
