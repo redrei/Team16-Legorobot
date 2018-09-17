@@ -60,7 +60,7 @@ public class Testsensor{
 
 			lydsensor.fetchSample(lydSample, 0);
 			if (lydSample[0] > 0){
-				System.out.println("Hørte en lyd og stopper." + lydSample[0]);
+				System.out.println("HÃ¸rte en lyd og stopper." + lydSample[0]);
 				Thread.sleep(2000);
 			}
 		}
