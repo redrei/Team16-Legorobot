@@ -57,8 +57,8 @@ public class Hitratunnel{
 
        		if (fargeSample[0]*100 == svart){
 		 		LCD.clear();
-				Motor.A.stop();
-				Motor.C.stop();
+				Motor.A.stop(true);
+				Motor.C.stop(true);
 				Thread.sleep(500);
 
 				Motor.A.backward();
@@ -66,13 +66,13 @@ public class Hitratunnel{
 				Thread.sleep(500);
 
 				Motor.A.rotate(180);
-				Motor.C.stop();
+				Motor.C.stop(true);
 
 				while (Motor.A.isMoving()) Thread.yield();
 
 					Thread.sleep(1000);
-					Motor.A.stop();
-    	 			Motor.C.stop();
+					Motor.A.stop(true);
+    	 			Motor.C.stop(true);
 			}
 
 			trykksensor.fetchSample(trykkSample, 0);
@@ -80,8 +80,8 @@ public class Hitratunnel{
     	 	if (trykkSample[0] > 0){
 		 		System.out.println("Svinger");
 		 		LCD.clear();
-				Motor.A.stop();
-				Motor.C.stop();
+				Motor.A.stop(true);
+				Motor.C.stop(true);
 				Thread.sleep(500);
 
 				Motor.A.backward();
@@ -89,19 +89,19 @@ public class Hitratunnel{
 				Thread.sleep(500);
 
 				Motor.A.rotate(180);
-				Motor.C.stop();
+				Motor.C.stop(true);
 
 				while (Motor.A.isMoving()) Thread.yield();
 
 					Thread.sleep(1000);
-					Motor.A.stop();
-    	 			Motor.C.stop();
+					Motor.A.stop(true);
+    	 			Motor.C.stop(true);
 			}
 			lydsensor.fetchSample(lydSample, 0);
 			if (lydSample[0] > 0.4){
 				System.out.println("Hørte en lyd og stopper.");
-				Motor.A.stop();
-    	 			Motor.C.stop();
+				Motor.A.stop(true);
+    	 		Motor.C.stop(true);
 				Thread.sleep(2000);
 			}
 			else{
