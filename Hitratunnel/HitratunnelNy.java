@@ -8,8 +8,10 @@ import lejos.hardware.BrickFinder;
 import lejos.robotics.SampleProvider;
 import lejos.hardware.sensor.NXTSoundSensor;
 import lejos.hardware.Button;
+import java.io.*;
+import lejos.hardware.Sound.*;
 
-public class HitratunnelNy{
+public class HitratunnelBedre{
 	public static void main (String[] args)  throws Exception{
 		Motor.A.setSpeed(200);
 	 	Motor.C.setSpeed(200);
@@ -54,8 +56,8 @@ public class HitratunnelNy{
 				Thread.sleep(500);
 
 
-				Motor.A.rotate(235);
-				Motor.C.rotate(-235);
+				Motor.A.rotate(230);
+				Motor.C.rotate(-230);
 				while(Motor.A.isMoving())Thread.yield();
 			}
 			trykksensor.fetchSample(trykkSample, 0);
@@ -63,6 +65,8 @@ public class HitratunnelNy{
     	 	if (trykkSample[0] > 0){
 		 		System.out.println("Svinger");
 		 		LCD.clear();
+		 		File au = new File("./au.wav");
+		 		lejos.hardware.Sound.playSample(au);
 				Motor.A.stop(true);
 				Motor.C.stop(true);
 				Thread.sleep(500);
