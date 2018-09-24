@@ -10,32 +10,25 @@ public class rally {
 	public static void main (String[] args)
 	throws Exception
 	{
-	//sett motor i A og B. Fargesensor i S1.
+		Motor.A.setSpeed(150);
+		Motor.B.setSpeed(100); //setter motorfart A til 200 og B til 300.
 
-		String left = "Turn left";
-		String right = "Turn right";
-
-		Motor.A.setSpeed(300);
-		Motor.B.setSpeed(200);
-	//setter motorfart A til 200 og B til 300.
+		Motor.A.forward();
+		Motor.B.forward(); //kjører framover motor A og B
 
 	 	Brick brick = BrickFinder.getDefault();
-	 	Port s1 = brick.getPort("S1");
-		//finner hvilke sensorer som er koblet til
+	 	Port s1 = brick.getPort("S1"); //finner hvilke sensorer som er koblet til
 
 		EV3ColorSensor fargesensor = new EV3ColorSensor(s1);
 		SampleProvider fargeLeser = fargesensor.getMode("RGB");
-		float[] fargeSample = new float[fargeLeser.sampleSize()];
-		//fargesensor med array og sampleprovider
+		float[] fargeSample = new float[fargeLeser.sampleSize()]; //fargesensor med array og sampleprovider
 
 		int svart = 0;
 		for (int i = 0; i<100; i++){
 			fargeLeser.fetchSample(fargeSample, 0);
 			svart += fargeSample[0]* 100;
 		}
-		svart = svart / 100 + 5;
-
-		//sammenligner farger, sjekker etter svart
+		svart = svart / 100 + 5; //sammenligner farger, sjekker etter svart
 
 	 	boolean fortsett = true;
 
@@ -43,19 +36,13 @@ public class rally {
 
 	   		fargeLeser.fetchSample(fargeSample, 0);
 
-			System.out.println("Svart: " + svart);
-
-			System.out.println("Farge: " + svart);
-
        		if (fargeSample[0]*100 == svart){
-		 		System.out.println("Svart");
-		 		Thread.sleep(200);
+		 		Motor.A.setSpeed(150);
+				Motor.B.setSpeed(100);
 			}
 			else  {
-				System.out.println("Ikke svart");
-				Motor.A.setSpeed(200);
-				Motor.B.setSpeed(300);
-				Thread.sleep(200);
+				Motor.A.setSpeed(100);
+				Motor.B.setSpeed(150);
 			}
 		}
 	}
