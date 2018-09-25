@@ -1,4 +1,4 @@
 Class-Path: /home/root/lejos/lib/ev3/ev3classes.jar /home/root/lejos/lib/ev3/dbusjava.jar
-Main-Class: Rally
+Main-Class: Relly
 
 
