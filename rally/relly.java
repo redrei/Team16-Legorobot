@@ -5,6 +5,9 @@ import lejos.hardware.port.Port;
 import lejos.hardware.Brick;
 import lejos.hardware.BrickFinder;
 import lejos.robotics.SampleProvider;
+import lejos.hardware.Button;
+import java.io.*;
+import lejos.hardware.Sound.*;
 
 public class relly {
 	public static void main (String[] args)
@@ -17,29 +20,26 @@ public class relly {
 	 	Port s1 = brick.getPort("S1"); //finner hvilke sensorer som er koblet til
 
 		EV3ColorSensor fargesensor = new EV3ColorSensor(s1);
-		SampleProvider fargeLeser = fargesensor.getMode("RGB");
-		float[] fargeSample = new float[fargeLeser.sampleSize()]; //fargesensor med array og sampleprovider
-
-		int svart = 0;
-		for (int i = 0; i<100; i++){
-			fargeLeser.fetchSample(fargeSample, 0);
-			svart += fargeSample[0]* 100;
-		}
-		svart = svart / 100 + 5; //sammenligner farger, sjekker etter svart
+		SampleProvider fargeLeser = fargesensor.getColorIDMode();
+	 //fargesensor med array og sampleprovider
+		int svart = 7; //sammenligner farger, sjekker etter svart
 
 	 	boolean fortsett = true;
 
-		while(fortsett) {
+		while(fortsett && Button.ESCAPE.isUp()) {
+			float[] fargeSample = new float[fargeLeser.sampleSize()];
 
 	   		fargeLeser.fetchSample(fargeSample, 0);
 
-       		if (fargeSample[0]*100 == svart){
+       		if (fargeSample[0] == svart){
 				Motor.A.setSpeed(100);
 				Motor.B.setSpeed(100);
 		 		Motor.A.forward();
 				Motor.B.forward();
 				Thread.sleep(500);
 				System.out.println("1");
+				File au = new File("./au.wav");
+		 		lejos.hardware.Sound.playSample(au);
 			}
 			else  {
 				Motor.A.setSpeed(150);
