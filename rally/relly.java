@@ -15,20 +15,23 @@ public class relly {
 	throws Exception
 	{
 		Motor.A.setSpeed(100);
-		Motor.B.setSpeed(100); //setter motorfart A til 200 og B til 300.
+		Motor.B.setSpeed(100);
+//setter motorfart A til 200 og B til 300.
 
 	 	Brick brick = BrickFinder.getDefault();
 	 	Port s1 = brick.getPort("S1");
-	 	Port s2 = brick.getPort("S2");//finner hvilke sensorer som er koblet til
+	 	Port s2 = brick.getPort("S2");
+//finner hvilke sensorer som er koblet til
 
 		EV3ColorSensor fargesensor = new EV3ColorSensor(s1);
 		SampleProvider fargeLeser = fargesensor.getColorIDMode();
 
 		NXTLightSensor lyssensor = new NXTLightSensor(s2);
 		SampleProvider lysLeser = lyssensor.getAmbientMode();
+//fargesensor med array og sampleprovider
 
-	 //fargesensor med array og sampleprovider
-		int svart = 7; //sammenligner farger, sjekker etter svart
+		int svart = 7;
+//sammenligner farger, sjekker etter svart
 
 	 	boolean fortsett = true;
 
