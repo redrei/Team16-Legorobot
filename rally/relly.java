@@ -10,7 +10,7 @@ public class relly {
 	public static void main (String[] args)
 	throws Exception
 	{
-		Motor.A.setSpeed(150);
+		Motor.A.setSpeed(100);
 		Motor.B.setSpeed(100); //setter motorfart A til 200 og B til 300.
 
 	 	Brick brick = BrickFinder.getDefault();
@@ -34,14 +34,14 @@ public class relly {
 	   		fargeLeser.fetchSample(fargeSample, 0);
 
        		if (fargeSample[0]*100 == svart){
-		 		Motor.A.Forward(true);
-				Motor.B.Forward(true);
+		 		Motor.A.forward(true);
+				Motor.B.forward(true);
 			}
 			else  {
-				Motor.A.setSpeed(100);
-				Motor.B.setSpeed(150);
-				Motor.A.Forward(true);
-				Motor.B.Forward(true);
+				Motor.A.setSpeed(150);
+				Motor.B.setSpeed(100);
+				Motor.A.forward(true);
+				Motor.B.forward(true);
 			}
 		}
 	}
