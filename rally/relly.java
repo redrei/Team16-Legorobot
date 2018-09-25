@@ -51,7 +51,7 @@ public class relly {
 				System.out.println("1");
 				File au = new File("./au.wav");
 		 		lejos.hardware.Sound.playSample(au);
-			}else if(lysSample[0] < 0.2){
+			}else if(lysSample[0] < 0.185){
 				Motor.A.setSpeed(100);
 				Motor.B.setSpeed(150);
 				System.out.println(lysSample[0]);
