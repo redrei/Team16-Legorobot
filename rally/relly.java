@@ -13,9 +13,6 @@ public class relly {
 		Motor.A.setSpeed(150);
 		Motor.B.setSpeed(100); //setter motorfart A til 200 og B til 300.
 
-		Motor.A.forward();
-		Motor.B.forward(); //kjører framover motor A og B
-
 	 	Brick brick = BrickFinder.getDefault();
 	 	Port s1 = brick.getPort("S1"); //finner hvilke sensorer som er koblet til
 
@@ -37,12 +34,14 @@ public class relly {
 	   		fargeLeser.fetchSample(fargeSample, 0);
 
        		if (fargeSample[0]*100 == svart){
-		 		Motor.A.setSpeed(150);
-				Motor.B.setSpeed(100);
+		 		Motor.A.Forward(true);
+				Motor.B.Forward(true);
 			}
 			else  {
 				Motor.A.setSpeed(100);
 				Motor.B.setSpeed(150);
+				Motor.A.Forward(true);
+				Motor.B.Forward(true);
 			}
 		}
 	}
