@@ -34,14 +34,20 @@ public class relly {
 	   		fargeLeser.fetchSample(fargeSample, 0);
 
        		if (fargeSample[0]*100 == svart){
+				Motor.A.setSpeed(100);
+				Motor.B.setSpeed(100);
 		 		Motor.A.forward();
 				Motor.B.forward();
+				Thread.sleep(500);
+				System.out.println("1");
 			}
 			else  {
 				Motor.A.setSpeed(150);
 				Motor.B.setSpeed(100);
 				Motor.A.forward();
 				Motor.B.forward();
+				Thread.sleep(500);
+				System.out.println("0");
 			}
 		}
 	}
