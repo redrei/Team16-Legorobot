@@ -43,8 +43,8 @@ public class relly {
 	   		fargeLeser.fetchSample(fargeSample, 0);
 			lysLeser.fetchSample(lysSample, 0);
        		if (fargeSample[0] == svart){
-				Motor.A.setSpeed(300);
-				Motor.B.setSpeed(300);
+				Motor.A.setSpeed(100);
+				Motor.B.setSpeed(100);
 		 		Motor.A.forward();
 				Motor.B.backward();
 				System.out.println("1");
@@ -52,7 +52,7 @@ public class relly {
 		 		//lejos.hardware.Sound.playSample(au);
 			}else if(lysSample[0] < 0.24){
 				Motor.A.setSpeed(300);
-				Motor.B.setSpeed(350);
+				Motor.B.setSpeed(400);
 				//System.out.println(lysSample[0]);
 				Thread.sleep(200);
 			}
@@ -61,7 +61,7 @@ public class relly {
 				Motor.B.setSpeed(300);
 				Motor.A.forward();
 				Motor.B.forward();
-				Thread.sleep(200);
+				//Thread.sleep(200);
 				//System.out.println("0");
 			}
 		}
