@@ -51,22 +51,22 @@ public class relly {
 				//System.out.println("0");
 			}
        		else*/ if (fargeSample[0] == svart){
-				Motor.A.setSpeed(300);
-				Motor.B.setSpeed(300);
+				Motor.A.setSpeed(200);
+				Motor.B.setSpeed(200);
 		 		Motor.A.forward();
 				Motor.B.backward();
 				//System.out.println("1");
 				//File au = new File("./au.wav");
 		 		//lejos.hardware.Sound.playSample(au);
 			}else if(lysSample[0] < 0.24){
-				Motor.A.setSpeed(700);
-				Motor.B.setSpeed(90);
+				Motor.A.setSpeed(400);
+				Motor.B.setSpeed(600);
 				//System.out.println(lysSample[0]);
 				//Thread.sleep(200);
 			}
 			else  {
-				Motor.A.setSpeed(900);
-				Motor.B.setSpeed(900);
+				Motor.A.setSpeed(600);
+				Motor.B.setSpeed(600);
 				Motor.A.forward();
 				Motor.B.forward();
 				//Thread.sleep(200);
