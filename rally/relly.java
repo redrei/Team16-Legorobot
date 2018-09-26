@@ -42,7 +42,15 @@ public class relly {
 
 	   		fargeLeser.fetchSample(fargeSample, 0);
 			lysLeser.fetchSample(lysSample, 0);
-       		if (fargeSample[0] == svart){
+			if (fargeSample[0] == svart && lysSample[0] < 0.24){
+				Motor.A.setSpeed(600);
+				Motor.B.setSpeed(600);
+				Motor.A.forward();
+				Motor.B.forward();
+				Thread.sleep(200);
+				//System.out.println("0");
+			}
+       		else if (fargeSample[0] == svart){
 				Motor.A.setSpeed(200);
 				Motor.B.setSpeed(200);
 		 		Motor.A.forward();
