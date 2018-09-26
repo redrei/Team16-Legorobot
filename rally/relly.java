@@ -48,7 +48,7 @@ public class relly {
 				//System.out.println("0");
 			}
        		else*/ if (fargeSample[0] == 7){
-				Motor.A.setSpeed(200);
+				Motor.A.setSpeed(150);
 				Motor.B.setSpeed(200);
 		 		Motor.A.forward();
 				Motor.B.backward();
