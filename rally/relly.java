@@ -43,11 +43,10 @@ public class relly {
 	   		fargeLeser.fetchSample(fargeSample, 0);
 			lysLeser.fetchSample(lysSample, 0);
        		if (fargeSample[0] == svart){
-				Motor.A.setSpeed(900);
-				Motor.B.setSpeed(900);
+				Motor.A.setSpeed(300);
+				Motor.B.setSpeed(300);
 		 		Motor.A.forward();
 				Motor.B.backward();
-				Thread.sleep(20);
 				System.out.println("1");
 				//File au = new File("./au.wav");
 		 		//lejos.hardware.Sound.playSample(au);
