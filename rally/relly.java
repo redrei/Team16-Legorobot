@@ -39,15 +39,22 @@ public class relly {
 
 	   		fargeLeser.fetchSample(fargeSample, 0);
 			lysLeser.fetchSample(lysSample, 0);
-			/*if (lysSample[0] < 0.42 && fargeSample[0]== 7){
+			if (lysSample[0] < 0.42 && fargeSample[0]== 7){
 				Motor.A.setSpeed(750);
 				Motor.B.setSpeed(750);
 				Motor.A.forward();
 				Motor.B.forward();
 				Thread.sleep(300);
 				//System.out.println("0");
-       		}else */if (fargeSample[0] == 7){
-				/* Thread.sleep(10);
+       		}else if(lysSample[0] <= 0.42){
+				Motor.A.setSpeed(400);
+				Motor.B.setSpeed(800);
+				Motor.A.forward();
+				Motor.B.forward();
+				//System.out.println(lysSample[0]);
+			}
+			 else if (fargeSample[0] == 7){
+				 Thread.sleep(50);
 				 lysLeser.fetchSample(lysSample, 0);
 				 if(lysSample[0] <= 0.42){
 				 	Motor.A.setSpeed(750);
@@ -55,12 +62,12 @@ public class relly {
 				 	Motor.A.forward();
 				 	Motor.B.forward();
 				 	Thread.sleep(300);
-				}else{*/
+				}else{
 					Motor.A.setSpeed(200);
 					Motor.B.setSpeed(400);
 					Motor.A.forward();
 					Motor.B.backward();
-					Thread.sleep(250);
+					Thread.sleep(350);
 					Motor.A.stop(true);
 					Motor.B.stop(true);
 					Thread.sleep(100);
@@ -68,28 +75,10 @@ public class relly {
 					//System.out.println("1");
 					//File au = new File("./au.wav");
 					//lejos.hardware.Sound.playSample(au);
-				//}
-		 	}
-			 else if(lysSample[0] <= 0.42){
-				/* Thread.sleep(10);
-				 fargeLeser.fetchSample(lysSample, 0);
-				 if(fargeSample[0] == 7){
-					Motor.A.setSpeed(900);
-					Motor.B.setSpeed(900);
-					Motor.A.forward();
-					Motor.B.forward();
-					Thread.sleep(300);
-				}else{*/
-					Motor.A.setSpeed(500);
-					Motor.B.setSpeed(800);
-					Motor.A.forward();
-					Motor.B.forward();
-					Thread.sleep(20);
-					//System.out.println(lysSample[0]);
-				//}
-			}else  {
-				Motor.A.setSpeed(900);
-				Motor.B.setSpeed(900);
+				}
+		 	}else  {
+				Motor.A.setSpeed(750);
+				Motor.B.setSpeed(750);
 				Motor.A.forward();
 				Motor.B.forward();
 				//Thread.sleep(200);
