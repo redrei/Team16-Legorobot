@@ -8,7 +8,7 @@ import lejos.robotics.SampleProvider;
 import lejos.hardware.Button;
 import java.io.*;
 import lejos.hardware.Sound.*;
-
+import lejos.hardware.sensor.NXTUltrasonicSensor;
 
 
 class Heis {
@@ -17,6 +17,7 @@ class Heis {
 		Brick brick = BrickFinder.getDefault();
 		Port s1 = brick.getPort("S1");
 		Port s2 = brick.getPort("S2");
+		Port s3 = brick.getPort("S3");
 
 		SampleProvider trykksensor1 = new EV3TouchSensor(s1);
 		float[] trykkSample1 = new float[trykksensor1.sampleSize()];
@@ -24,26 +25,32 @@ class Heis {
 		SampleProvider trykksensor2 = new EV3TouchSensor(s2);
 		float[] trykkSample2 = new float[trykksensor2.sampleSize()];
 
+		NXTUltrasonicSensor ultrasonisksensor = new NXTUltrasonicSensor(s3);
+		SampleProvider lengdeLeser = ultrasonisksensor.getDistanceMode();
+		float[]	lengdeSample = new float[lengdeLeser.sampleSize()];
+
 		Motor.A.setSpeed(225);
-		
+
 		boolean fortsett = true;
 
 		while(fortsett) {
 
 			trykksensor1.fetchSample(trykkSample1, 0);
 			trykksensor2.fetchSample(trykkSample2, 0);
+			lengdeLeser.fetchSample(lengdeSample, 0);
 
 			if (trykkSample1[0] > 0){
-				
 				Motor.A.forward();
-				//Thread.sleep(1250);
+				Thread.sleep(1250);
 				Motor.A.stop();
+				System.out.println(lengdeSample[0]);
 			}
+
 			if (trykkSample2[0] > 0){
-				
 				Motor.A.backward();
-				//Thread.sleep(1400);
+				Thread.sleep(1400);
 				Motor.A.stop();
+				System.out.println(lengdeSample[0]);
 			}
 
 
