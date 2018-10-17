@@ -1,0 +1,3 @@
+## Heisprosjekt
+
+Dette er et prosjekt der vi prøver å lage en heis som kan bevege seg ihvertfall +- 1 etasje
