@@ -24,6 +24,8 @@ class Heis {
 		SampleProvider trykksensor2 = new EV3TouchSensor(s2);
 		float[] trykkSample2 = new float[trykksensor2.sampleSize()];
 
+		Motor.A.setSpeed(225);
+		
 		boolean fortsett = true;
 
 		while(fortsett) {
@@ -32,14 +34,16 @@ class Heis {
 			trykksensor2.fetchSample(trykkSample2, 0);
 
 			if (trykkSample1[0] > 0){
-				Motor.A.setSpeed(225);
+				
 				Motor.A.forward();
-				Thread.sleep(2000);
+				//Thread.sleep(1250);
+				Motor.A.stop();
 			}
 			if (trykkSample2[0] > 0){
-				Motor.A.setSpeed(225);
+				
 				Motor.A.backward();
-				Thread.sleep(1000);
+				//Thread.sleep(1400);
+				Motor.A.stop();
 			}
 
 
