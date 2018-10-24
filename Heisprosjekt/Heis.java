@@ -8,7 +8,7 @@ import lejos.robotics.SampleProvider;
 import lejos.hardware.Button;
 import java.io.*;
 import lejos.hardware.Sound.*;
-import lejos.hardware.sensor.NXTUltrasonicSensor;
+import lejos.hardware.sensor.EV3UltrasonicSensor;
 
 
 class Heis {
@@ -25,11 +25,11 @@ class Heis {
 		SampleProvider trykksensor2 = new EV3TouchSensor(s2);
 		float[] trykkSample2 = new float[trykksensor2.sampleSize()];
 
-		NXTUltrasonicSensor ultrasonisksensor = new NXTUltrasonicSensor(s3);
+		EV3UltrasonicSensor ultrasonisksensor = new EV3UltrasonicSensor(s3);
 		SampleProvider lengdeLeser = ultrasonisksensor.getDistanceMode();
 		float[]	lengdeSample = new float[lengdeLeser.sampleSize()];
 
-		Motor.A.setSpeed(225);
+		Motor.A.setSpeed(150);
 
 		boolean fortsett = true;
 
@@ -40,21 +40,36 @@ class Heis {
 			lengdeLeser.fetchSample(lengdeSample, 0);
 
 			if (trykkSample1[0] > 0){
-				Motor.A.forward();
-				Thread.sleep(1250);
-				Motor.A.stop();
-				System.out.println(lengdeSample[0]);
+				File opp = new File("./opp.wav");
+				lejos.hardware.Sound.playSample(opp);
+				while(lengdeSample[0] < 0.14) {
+					lengdeLeser.fetchSample(lengdeSample, 0);
+					Motor.A.forward();
+					System.out.println(lengdeSample[0]);
+					File andre = new File("./2etasje.wav");
+					if (lengdeSample[0] >= 0.14) {
+						Motor.A.stop();
+						lejos.hardware.Sound.playSample(andre);
+						break;
+					}
+				}
 			}
 
 			if (trykkSample2[0] > 0){
-				Motor.A.backward();
-				Thread.sleep(1400);
-				Motor.A.stop();
-				System.out.println(lengdeSample[0]);
+				File ned = new File("./ned.wav");
+				lejos.hardware.Sound.playSample(ned);
+				while(lengdeSample[0] > 0.03) {
+					lengdeLeser.fetchSample(lengdeSample, 0);
+					Motor.A.backward();
+					System.out.println(lengdeSample[0]);
+					File forste = new File("./1etasje.wav");
+					if (lengdeSample[0] <= 0.04) {
+						Motor.A.stop();
+						lejos.hardware.Sound.playSample(forste);
+						break;
+					}
+				}
 			}
-
-
 		}
-
 	}
 }
