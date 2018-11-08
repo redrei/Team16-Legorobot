@@ -30,6 +30,7 @@ class Heis {
 		float[]	lengdeSample = new float[lengdeLeser.sampleSize()];
 
 		Motor.A.setSpeed(150);
+		Motor.B.setSpeed(50);
 
 		boolean fortsett = true;
 
@@ -40,22 +41,31 @@ class Heis {
 			lengdeLeser.fetchSample(lengdeSample, 0);
 
 			if (trykkSample1[0] > 0){
+				Motor.B.forward();
+				Thread.sleep(2100);
+				Motor.B.stop();
 				File opp = new File("./opp.wav");
 				lejos.hardware.Sound.playSample(opp);
-				while(lengdeSample[0] < 0.14) {
+				while(lengdeSample[0] < 0.09) {
 					lengdeLeser.fetchSample(lengdeSample, 0);
 					Motor.A.forward();
 					System.out.println(lengdeSample[0]);
 					File andre = new File("./2etasje.wav");
-					if (lengdeSample[0] >= 0.14) {
+					if (lengdeSample[0] >= 0.09) {
 						Motor.A.stop();
 						lejos.hardware.Sound.playSample(andre);
+						Motor.B.backward();
+						Thread.sleep(2100);
+						Motor.B.stop();
 						break;
 					}
 				}
 			}
 
 			if (trykkSample2[0] > 0){
+				Motor.B.forward();
+				Thread.sleep(2100);
+				Motor.B.stop();
 				File ned = new File("./ned.wav");
 				lejos.hardware.Sound.playSample(ned);
 				while(lengdeSample[0] > 0.03) {
@@ -66,6 +76,9 @@ class Heis {
 					if (lengdeSample[0] <= 0.04) {
 						Motor.A.stop();
 						lejos.hardware.Sound.playSample(forste);
+						Motor.B.backward();
+						Thread.sleep(2100);
+						Motor.B.stop();
 						break;
 					}
 				}
