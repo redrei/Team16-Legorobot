@@ -10,7 +10,6 @@ import java.io.*;
 import lejos.hardware.Sound.*;
 import lejos.hardware.sensor.EV3UltrasonicSensor;
 
-
 class Heis {
 	public static void main (String[] args)  throws Exception{
 
@@ -39,50 +38,65 @@ class Heis {
 			trykksensor1.fetchSample(trykkSample1, 0);
 			trykksensor2.fetchSample(trykkSample2, 0);
 			lengdeLeser.fetchSample(lengdeSample, 0);
+			musikk sangrunnable = new musikk(new File("./heismusikk.wav"));
 
-			if (trykkSample1[0] > 0){
-				Motor.B.forward();
-				Thread.sleep(2100);
-				Motor.B.stop();
-				File opp = new File("./opp.wav");
-				lejos.hardware.Sound.playSample(opp);
-				while(lengdeSample[0] < 0.09) {
-					lengdeLeser.fetchSample(lengdeSample, 0);
-					Motor.A.forward();
-					System.out.println(lengdeSample[0]);
-					File andre = new File("./2etasje.wav");
-					if (lengdeSample[0] >= 0.09) {
-						Motor.A.stop();
-						lejos.hardware.Sound.playSample(andre);
-						Motor.B.backward();
-						Thread.sleep(2100);
-						Motor.B.stop();
-						break;
-					}
-				}
-			}
-
-			if (trykkSample2[0] > 0){
-				Motor.B.forward();
-				Thread.sleep(2100);
-				Motor.B.stop();
-				File ned = new File("./ned.wav");
-				lejos.hardware.Sound.playSample(ned);
-				while(lengdeSample[0] > 0.03) {
-					lengdeLeser.fetchSample(lengdeSample, 0);
-					Motor.A.backward();
-					System.out.println(lengdeSample[0]);
-					File forste = new File("./1etasje.wav");
-					if (lengdeSample[0] <= 0.04) {
-						Motor.A.stop();
-						lejos.hardware.Sound.playSample(forste);
-						Motor.B.backward();
-						Thread.sleep(2100);
-						Motor.B.stop();
-						break;
-					}
-				}
-			}
-		}
+        if (trykkSample1[0] > 0){
+            Motor.B.forward();
+            Thread.sleep(2100);
+            Motor.B.stop();
+            File opp = new File("./opp.wav");
+            lejos.hardware.Sound.playSample(opp);
+            //Thread vakkersang = new Thread(sangrunnable);
+            //vakkersang.start();
+            while(lengdeSample[0] < 0.13) {
+                    lengdeLeser.fetchSample(lengdeSample, 0);
+                    Motor.A.forward();
+                    System.out.println(lengdeSample[0]);
+                    File andre = new File("./2etasje.wav");
+                    if (lengdeSample[0] >= 0.13) {
+                            Motor.A.stop();
+                            //motorstopp NB! må være før vakkersang.join()
+          //                  sangrunnable.doStop();
+                            //stopp den vakre sangen via runtimen
+        //                    vakkersang.join();
+                            //sier at vakkersang threaden må bli ferdig
+                            lejos.hardware.Sound.playSample(andre);
+                            Motor.B.backward();
+                            Thread.sleep(2100);
+                            Motor.B.stop();
+                            break;
+                        }
+              }       
 	}
+        
+        if (trykkSample2[0] > 0){
+            Motor.B.forward();
+            Thread.sleep(2100);
+            Motor.B.stop();
+            File ned = new File("./ned.wav");
+            lejos.hardware.Sound.playSample(ned);
+            //Thread vakkersang = new Thread(sangrunnable);
+            //vakkersang.start();
+                while(lengdeSample[0] > 0.03) {
+                    lengdeLeser.fetchSample(lengdeSample, 0);
+                    Motor.A.backward();
+                    System.out.println(lengdeSample[0]);
+                    File forste = new File("./1etasje.wav");
+                    if (lengdeSample[0] <= 0.04) {
+                            Motor.A.stop();
+                            //motorstopp NB! må være før vakkersang.join()
+                            //sangrunnable.doStop();
+                            //stopp den vakre sangen via runtimen
+                            //vakkersang.join();
+                            //sier at vakkersang threaden må bli ferdig
+                            lejos.hardware.Sound.playSample(forste);
+                            Motor.B.backward();
+                            Thread.sleep(2100);
+                            Motor.B.stop();
+                            break;
+                    }
+                }
+            }
+	}
+    }
 }
