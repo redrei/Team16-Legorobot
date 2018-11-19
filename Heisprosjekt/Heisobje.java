@@ -75,7 +75,7 @@ class Heisobje {
 		}catch(Exception e){
 			System.out.println(e);
 		}
-		while(lengde[0] > 0.04) {
+		while(lengde[0] > 0.036) {
 			lengdeLeser.fetchSample(lengde, 0);
 			Motor.A.backward();
 			System.out.println(lengde[0]);
@@ -125,7 +125,7 @@ class Heisobje {
 		}catch(Exception e){
 			System.out.println(e);
 		}
-		while(lengde[0] < 0.131) {
+		while(lengde[0] < 0.134) {
 		//	System.out.println(4);
 			lengdeLeser.fetchSample(lengde, 0);
 		//	System.out.println(5);
@@ -135,7 +135,7 @@ class Heisobje {
 		//	System.out.println(7);
 			File andre = new File("./2etasje.wav");
 		//	System.out.println('8');
-			if (lengde[0] >= 0.127) {
+			if (lengde[0] >= 0.126) {
 			//	System.out.println('9');
 				Motor.A.stop();
 				//motorstopp NB! må være før vakkersang.join()

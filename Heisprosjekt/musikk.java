@@ -16,7 +16,7 @@ public class musikk implements Runnable{
 		while(!exit){
 			Sound.playSample(musikk);
 		}
-		//Sound.playSample(lydto);
+		Sound.playSample(lydto);
 	}
      public synchronized void doStop() {
         exit = true;
