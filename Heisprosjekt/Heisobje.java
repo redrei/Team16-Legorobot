@@ -14,8 +14,8 @@ import lejos.hardware.sensor.EV3UltrasonicSensor;
 class Heisobje {
 	static File lydopp = new File("./opp.wav");
 	static File lydned = new File("./ned.wav");
-	static File lydforste = new File("./forste.wav");
-	static File lydandre = new File("./andre.wav");
+	static File lydforste = new File("./1etasje_1.wav");
+	static File lydandre = new File("./2etasje_1.wav");
 
 	public static void main (String[] args)  throws Exception{
 
