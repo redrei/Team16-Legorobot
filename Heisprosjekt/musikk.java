@@ -12,11 +12,23 @@ public class musikk implements Runnable{
 	this.musikk = musikk;
 	}
 	public void run(){
-		//Sound.playSample(lyden);
-		while(!exit){
-			Sound.playSample(musikk);
+		try{
+			Sound.playSample(lyden);
+		}catch(Exception e){
+			System.out.println(e);
 		}
-		Sound.playSample(lydto);
+		while(!exit){
+			try{
+				Sound.playSample(musikk);
+			}catch(Exception e){
+				System.out.println(e);
+			}
+		}
+		try{
+			Sound.playSample(lydto);
+		}catch(Exception e){
+			System.out.println(e);
+		}
 	}
      public synchronized void doStop() {
         exit = true;
