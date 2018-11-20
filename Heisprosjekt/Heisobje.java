@@ -12,10 +12,10 @@ import lejos.hardware.sensor.EV3UltrasonicSensor;
 
 
 class Heisobje {
-	static File lydopp = new File("./opp.wav");
-	static File lydned = new File("./ned.wav");
-	static File lydforste = new File("./1etasje_1.wav");
-	static File lydandre = new File("./2etasje_1.wav");
+	static File LYD_OPP = new File("./opp.wav");
+	static File LYD_NED = new File("./ned.wav");
+	static File LYD_FORSTE = new File("./forste.wav");
+	static File LYD_ANDRE = new File("./andre.wav");
 
 	public static void main (String[] args)  throws Exception{
 
@@ -46,10 +46,12 @@ class Heisobje {
 			lengdeLeser.fetchSample(lengdeSample, 0);
 
 			if (trykkSample1[0] > 0){
+				//hvis trykksensor 1 blir trykket går heisen opp
 				heisOpp(lengdeSample, lengdeLeser);
 			}
 
 			if (trykkSample2[0] > 0){
+				//hvis trykksensor 2 blir trykket går heisen ned
 				heisNed(lengdeSample, lengdeLeser);
 
 			}
@@ -57,7 +59,9 @@ class Heisobje {
 	}
 
 	public static void heisNed(float[] lengde, SampleProvider lengdeLeser){
-		musikk sangrunnable = new musikk(new File("./heismusikk.wav"),lydned,lydforste);
+		//denne metoden kjører heisen ned
+		Musikk sangRunnable = new Musikk(new File("./heismusikk.wav"),LYD_NED,LYD_FORSTE);
+		//lager et objekt av klassen Musikk for å lage en thread av senere
 		Motor.B.forward();
 		try{
 			Thread.sleep(2100);
@@ -65,11 +69,10 @@ class Heisobje {
 			System.out.println(e);
 		}
 		Motor.B.stop();
-		//File ned = new File("./ned.wav");
-		//File forste = new File("./1etasje.wav");
-		//lejos.hardware.Sound.playSample(ned);
-		Thread vakkersang = new Thread(sangrunnable);
-		vakkersang.start();
+		Thread vakkerSang = new Thread(sangRunnable);
+		//lager thread med objektet sangRunnable av klassen Musikk som runnable
+		vakkerSang.start();
+		//dette starter Musikk.run() som en ny thread
 		try{
 			Thread.sleep(3500);
 		}catch(Exception e){
@@ -78,19 +81,19 @@ class Heisobje {
 		while(lengde[0] > 0.036) {
 			lengdeLeser.fetchSample(lengde, 0);
 			Motor.A.backward();
-			System.out.println(lengde[0]);
-			if (lengde[0] <= 0.042) {
+			//System.out.println(lengde[0]);
+			if (lengde[0] <= 0.042) {//
 				Motor.A.stop();
-				//motorstopp NB! må være før vakkersang.join()
-				sangrunnable.doStop();
+				//motorstopp NB! må være før vakkerSang.join()
+				sangRunnable.doStop();
 				//stopp den vakre sangen via runtimen
 				try{
-					vakkersang.join();
+					vakkerSang.join();
+					//venter på at den vakre sangen stopper
 				}catch(Exception e){
 					System.out.println(e);
 				}
-				//sier at vakkersang threaden må bli ferdig
-				//lejos.hardware.Sound.playSample(forste);
+				//sier at vakkerSang threaden må bli ferdig
 				Motor.B.backward();
 				try{
 					Thread.sleep(2100);
@@ -104,50 +107,42 @@ class Heisobje {
 	}
 
 	public static void heisOpp(float[] lengde, SampleProvider lengdeLeser){
-		musikk sangrunnable = new musikk(new File("./heismusikk.wav"),lydopp,lydandre);
+		//Denne metoden kjører heisen opp
+		Musikk sangRunnable = new Musikk(new File("./heismusikk.wav"),LYD_OPP,LYD_ANDRE);
+		//lager et objekt av klassen Musikk for å lage en thread av senere
 		Motor.B.forward();
-		//System.out.println("0");
 		try{
 			Thread.sleep(2100);
 		}catch(Exception e){
 			System.out.println(e);
 		}
 		Motor.B.stop();
-	//	System.out.println("1");
-	//	File opp = new File("./opp.wav");
-	//	System.out.println(2);
-		//lejos.hardware.Sound.playSample(opp);
-		//System.out.println(3);
-		Thread vakkersang = new Thread(sangrunnable);
-		vakkersang.start();
+		Thread vakkerSang = new Thread(sangRunnable);
+		//lager thread med objektet sangRunnable av klassen Musikk som runnable
+		vakkerSang.start();
+		//dette starter Musikk.run() som en ny thread
 		try{
 		Thread.sleep(3500);
 		}catch(Exception e){
 			System.out.println(e);
 		}
 		while(lengde[0] < 0.134) {
-		//	System.out.println(4);
 			lengdeLeser.fetchSample(lengde, 0);
-		//	System.out.println(5);
 			Motor.A.forward();
-		//	System.out.println(6);
-			System.out.println(lengde[0]);
-		//	System.out.println(7);
+			//System.out.println(lengde[0]);
 			File andre = new File("./2etasje.wav");
-		//	System.out.println('8');
 			if (lengde[0] >= 0.126) {
-			//	System.out.println('9');
 				Motor.A.stop();
-				//motorstopp NB! må være før vakkersang.join()
-				sangrunnable.doStop();
+				//motorstopp NB! må være før vakkerSang.join()
+				sangRunnable.doStop();
 				//stopp den vakre sangen via runtimen
 				try{
-					vakkersang.join();
+					vakkerSang.join();
+					//venter på at den vakre sangen stopper
 				}catch(Exception e){
 					System.out.println(e);
 				}
-				//sier at vakkersang threaden må bli ferdig
-				//lejos.hardware.Sound.playSample(andre);
+				//sier at vakkerSang threaden må bli ferdig
 				Motor.B.backward();
 				try{
 					Thread.sleep(2100);
